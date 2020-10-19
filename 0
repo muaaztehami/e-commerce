@@ -1,0 +1,6 @@
+      invoke  active_record
+      remove    db/migrate/20201019052758_create_carts.rb
+      remove    app/models/cart.rb
+      invoke    test_unit
+      remove      test/models/cart_test.rb
+      remove      test/fixtures/carts.yml

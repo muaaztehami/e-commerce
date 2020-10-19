@@ -1,0 +1,28 @@
+<table class="row">
+  
+    <tr>
+      <th></th>
+      <th>Product</th>
+      <th>Description</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Total</th>
+    </tr>
+
+    <% @cart.cart_items.each do |item| %>
+      <tr>
+        <td><%= link_to image_tag(item.product.image.url(:medium), class: "image"), product_path(item.product.id)  %></td>
+        <td><%= link_to item.product.name, product_path(item.product.id) %> | </td>
+        <td><%= item.product.description %> | </td>
+        <td><%= item.quantity %> | </td>
+        <td><%= number_to_currency item.product.price, unit: 'PKR', format: '%n %u' %> | </td>
+        <td><%= number_to_currency item.product.price*item.quantity, unit: 'PKR', format: '%n %u'%></td>>
+        <td><%= link_to 'Remove', cart_item_path(item),
+            method: :delete,
+            data: {confirm: 'Are you sure?'} %>
+        </td>
+      </tr>
+    <% end %>
+  
+</table>
+<%= link_to 'Back', products_path %> 

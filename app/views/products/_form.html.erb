@@ -1,5 +1,18 @@
 <%= form_with(model: @product, html: {multipart: true}, local: true) do |form| %>
 
+  <% if @product.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@product.errors.count, "error") %>
+        : product not saved!
+      </h2>
+      <ul>
+        <% @product.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
   
   <p>
     <%= form.label :name %><br>
@@ -14,6 +27,11 @@
   <p>
     <%= form.label :price %><br/>
     <%= form.text_field :price %>
+  </p>
+
+  <p>
+    <%= form.label :quantity %><br/>
+    <%= form.text_field :quantity %>
   </p>
 
   <p>
