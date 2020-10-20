@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  delivery_address: MyString
+  delivery_type: MyString
+  payment_type: MyString
+  user: one
+  cart: one
+
+two:
+  delivery_address: MyString
+  delivery_type: MyString
+  payment_type: MyString
+  user: two
+  cart: two

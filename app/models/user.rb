@@ -6,10 +6,7 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: [:google_oauth2]
 
   
-  # def self.from_google(email:, uid:)
-    
-  #   create_with(uid: uid).find_or_create_by!(email: email)
-  # end
+  has_many :orders, dependent: :destroy 
 
   def self.from_omniauth(auth)
     where(uid: auth.uid).first_or_create do |user|
