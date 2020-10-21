@@ -1,9 +1,9 @@
 class OrdersController < ApplicationController
   #before_action :logged_in_user
   before_action :authenticate_user!
-
+  
   def index
-    @orders = Order.where(user_id: current_user)
+    @orders = Order.where(user_id: current_user).includes([:cart])
   end
 
   def new
@@ -22,6 +22,7 @@ class OrdersController < ApplicationController
   
     if @order.save
       session[:cart_id] = nil
+      # @cart.cart_status = true
       flash[:success] = "Thank you for your order!"
       redirect_to orders_path
     else

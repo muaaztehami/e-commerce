@@ -1,7 +1,7 @@
 class CartItemsController < ApplicationController
   before_action :set_cart, only: [:create, :destroy]
   before_action :authenticate_user!
-
+  
   def create
     @cart.add_product(params)
     if @cart.save
