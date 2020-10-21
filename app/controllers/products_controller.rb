@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   include ProductsHelper
+  before_action :authenticate_admin!, except: [:index, :show]
 
   def index
     @products = Product.all

@@ -1,5 +1,4 @@
 <h1>Listing Products</h1>
-<%= link_to 'Add New Product', new_product_path %>
 <%= link_to 'Your Cart',  controller: 'carts' %>
 <%= link_to 'Your Orders',  controller: 'orders' %>
 <table>
@@ -14,10 +13,7 @@
         <td><%= product.name %> | </td>
         <td><%= number_to_currency product.price, unit: 'PKR', format: '%n %u' %> | </td>
         <td><%= link_to 'Show', product_path(product) %></td> 
-        <td><%= link_to 'Edit', edit_product_path(product) %></td>
-        <td><%= link_to 'Destroy', product_path(product),
-                method: :delete,
-                data: {confirm: 'Are you sure?'} %>
+        
       </tr>
     <% end %>
 </table>
