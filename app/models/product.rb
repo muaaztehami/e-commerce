@@ -1,4 +1,6 @@
 class Product < ApplicationRecord
+  paginates_per 2
+
   validates :name, presence: true,
                   length: {minimum: 2}
                   
