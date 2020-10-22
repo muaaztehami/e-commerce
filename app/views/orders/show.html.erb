@@ -1,0 +1,25 @@
+<table class="row">
+  
+    <tr>
+      <th></th>
+      <th>Product</th>
+      <th>Description</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Total</th>
+    </tr>
+
+    <% @order_cart.cart_items.each do |item| %>
+      <tr>
+        <td><%= image_tag(item.product.image.url(:medium), class: "image")  %></td>
+        <td><%= item.product.name %> | </td>
+        <td><%= item.product.description %> | </td>
+        <td><%= item.quantity %> | </td>
+        <td><%= number_to_currency item.product.price, unit: 'PKR', format: '%n %u' %> | </td>
+        <td><%= number_to_currency item.product.price*item.quantity, unit: 'PKR', format: '%n %u'%></td>>
+        </td>
+      </tr>
+    <% end %>
+  
+</table>
+<%= link_to '<Back', orders_path %> 

@@ -1,6 +1,8 @@
 class Cart < ApplicationRecord
   has_many :cart_items, dependent: :destroy
   has_one :order, dependent: :destroy
+  has_many :products, through: :cart_items
+  #delegate :products, to: :cart_item
   #belongs_to :user
 
   def add_product(product_params)

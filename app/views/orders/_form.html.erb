@@ -18,5 +18,6 @@
   <%= f.select :payment_type, Order::PAYMENT_TYPES,
     prompt: 'Select a payment method', class: 'form-control' %>
   <%= f.hidden_field :user_id, value: current_user.id %>
-  <%= f.hidden_field :cart_id, value: @cart.id %><%= f.submit yield(:button_text), class: "btn btn-primary" %>
+  <%= f.hidden_field :cart_id, value: @cart.id %>
+  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
 <% end %>
