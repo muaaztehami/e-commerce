@@ -64,3 +64,5 @@ gem 'cancancan'
 gem 'kaminari'
 gem 'rails_admin'
 gem 'simple_token_authentication', '~> 1.0'
+#gem 'rails-api'
+gem 'rubocop', '~> 1.2', require: false
