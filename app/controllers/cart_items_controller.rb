@@ -1,7 +1,7 @@
 class CartItemsController < ApplicationController
-  before_action :set_cart, only: [:create, :destroy]
+  before_action :set_cart, only: %i[create destroy]
   before_action :authenticate_user!
-  
+
   def create
     @cart.add_product(params)
     if @cart.save
@@ -17,12 +17,12 @@ class CartItemsController < ApplicationController
     if @cart_item.quantity == 1
       @cart_item.destroy
     else
-      @cart_item.quantity -=1
+      @cart_item.quantity -= 1
       @cart_item.save
     end
     product = Product.find(@cart_item.product_id)
-    product.quantity +=1
-    product.save 
+    product.quantity += 1
+    product.save
     flash.notice = "Product '#{product.name}' Removed!"
 
     redirect_to carts_path

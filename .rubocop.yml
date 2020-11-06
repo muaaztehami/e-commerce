@@ -1,0 +1,46 @@
+# inherit_from: .rubocop_todo.yml
+AllCops:
+  # Include:
+  #   - Rakefile
+  #   - config.ru
+  #   - lib/**/*.rake
+  Exclude:
+    - db/**/*
+    - spec/**/*
+    - config/**/*
+    - bin/**/*
+    - test/**/*
+    - vendor/**/*
+    - Rakefile
+    - node_modules/**/*
+
+Metrics/ModuleLength:
+  Max: 150
+  
+Metrics/AbcSize:
+  Max: 145
+
+Metrics/MethodLength:
+  Max: 100
+
+Metrics/BlockLength:
+  Max: 484
+
+Metrics/ParameterLists:
+  Max: 6
+
+Metrics/ClassLength:
+  Max: 670
+
+Metrics/BlockNesting:
+  Max: 6
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Exclude:
+    - app/controllers/**/*

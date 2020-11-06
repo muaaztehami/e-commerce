@@ -2,8 +2,8 @@ class Cart < ApplicationRecord
   has_many :cart_items, dependent: :destroy
   has_one :order, dependent: :destroy
   has_many :products, through: :cart_items
-  #delegate :products, to: :cart_item
-  #belongs_to :user
+  # delegate :products, to: :cart_item
+  # belongs_to :user
 
   def add_product(product_params)
     current_item = cart_items.find_by(product_id: product_params[:product][:product_id])
@@ -12,8 +12,8 @@ class Cart < ApplicationRecord
       current_item.save
     else
       new_item = cart_items.create(product_id: product_params[:product][:product_id],
-      quantity: product_params[:product][:quantity],
-      cart_id: self.id)
+                                   quantity: product_params[:product][:quantity],
+                                   cart_id: id)
     end
     product = Product.find(product_params[:product][:product_id])
     product.quantity -= product_params[:product][:quantity].to_i

@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   include ProductsHelper
-  #before_action :authenticate_admin_user!, except: [:index, :show]
+  # before_action :authenticate_admin_user!, except: [:index, :show]
   load_and_authorize_resource
 
   def index
@@ -21,7 +21,7 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    
+
     if @product.save
       flash.notice = "Product '#{@product.name}' Created!"
       redirect_to @product

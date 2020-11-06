@@ -15,10 +15,8 @@ class ProductsRepresenter
       }
     end
   end
-  ProductsRepresenter
+
   private
 
-  attr_reader :products #allow to access products by products methods only availabe inside the class
-  
+  attr_reader :products # allow to access products by products methods only availabe inside the class
 end
-

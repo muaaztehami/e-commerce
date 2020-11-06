@@ -1,15 +1,14 @@
-
-class  Api::V1::ProductsController < Api::V1::ApplicationController
-  #protect_from_forgery with: :null_session
-  #before_action :authenticate_api_v1_user!
-  #before_action :verify_authenticity_token
-  #before_action :authenticate_entity_from_token! 
+class Api::V1::ProductsController < Api::V1::ApplicationController
+  # protect_from_forgery with: :null_session
+  # before_action :authenticate_api_v1_user!
+  # before_action :verify_authenticity_token
+  # before_action :authenticate_entity_from_token!
   before_action :verify_user_token
 
   def index
-    #@products = Product.page params[:page]
+    # @products = Product.page params[:page]
     products = Product.all
-    render json: ProductsRepresenter.new(products).as_json #serializer
+    render json: ProductsRepresenter.new(products).as_json # serializer
   end
 
   def show
@@ -19,7 +18,7 @@ class  Api::V1::ProductsController < Api::V1::ApplicationController
 
   def create
     product = Product.new(product_params)
-    
+
     if product.save
       render json: ProductRepresenter.new(product).as_json, status: :created
     else
@@ -28,7 +27,6 @@ class  Api::V1::ProductsController < Api::V1::ApplicationController
   end
 
   def update
-    
     product = Product.find(params[:id])
     if product.update(product_params)
       render json: ProductRepresenter.new(product).as_json, status: :ok
@@ -38,11 +36,12 @@ class  Api::V1::ProductsController < Api::V1::ApplicationController
   end
 
   def destroy
-    product = Product.find(params[:id]).destroy!
+    Product.find(params[:id]).destroy!
     head :no_content
   end
 
   private
+
   def product_params
     params.require(:product).permit(:name, :description, :price, :quantity, :image)
   end
@@ -52,13 +51,10 @@ class  Api::V1::ProductsController < Api::V1::ApplicationController
       @current_user = User.find_by(authentication_token: request.headers['X-User-Token'])
       if @current_user.blank?
         render json: { errors: 'Invalid User Token' }, status: :bad_request
-        return
+        nil
       end
     else
       render json: { errors: 'User Token required' }, status: :bad_request
     end
   end
-
 end
-
-

@@ -1,5 +1,4 @@
 ActiveAdmin.register User do
-
   # form do |f|
   #   inputs "Details" do
   #     input :email
@@ -20,14 +19,4 @@ ActiveAdmin.register User do
     f.actions
   end
   permit_params :email, :password, :password_confirmation, :supervisor_role, :user_role
-  # permit_params :email, :encrypted_password, :reset_password_token, :reset_password_sent_at, :remember_created_at, :uid, :supervisor_role, :user_role
-  #
-  # or
-  #
-  # permit_params do
-  #   permitted = [:email, :encrypted_password, :reset_password_token, :reset_password_sent_at, :remember_created_at, :uid, :supervisor_role, :user_role]
-  #   permitted << :other if params[:action] == 'create' && current_user.admin?
-  #   permitted
-  # end
-  
 end

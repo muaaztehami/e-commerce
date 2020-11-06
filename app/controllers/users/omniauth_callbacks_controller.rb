@@ -2,13 +2,13 @@
 
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def google_oauth2
-    @user = User.from_omniauth(request.env["omniauth.auth"])
+    @user = User.from_omniauth(request.env['omniauth.auth'])
 
     if @user.persisted?
-      #session[:user_id] = @user.id
+      # session[:user_id] = @user.id
       sign_in_and_redirect @user, event: :authentication
     else
-      session["devise.google_data"] = request.env["omniauth.auth"].except(:extra)
+      session['devise.google_data'] = request.env['omniauth.auth'].except(:extra)
       redirect_to new_user_registration_url
     end
   end
@@ -22,6 +22,4 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def after_sign_in_path_for(resource_or_scope)
     stored_location_for(resource_or_scope) || root_path
   end
-
-
 end
