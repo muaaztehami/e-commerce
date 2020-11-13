@@ -7,7 +7,12 @@ class Api::V1::ProductsController < Api::V1::ApplicationController
 
   def index
     # @products = Product.page params[:page]
-    products = Product.all
+    search = params[:keyword].present? ? params[:keyword] : nil
+    if search
+      products = Product.search(search)
+    else
+      products = Product.all
+    end
     render json: ProductsRepresenter.new(products).as_json # serializer
   end
 

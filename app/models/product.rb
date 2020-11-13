@@ -1,4 +1,11 @@
 class Product < ApplicationRecord
+  searchkick text_middle: [:name]
+
+  # def search_data
+  #   {
+  #     name: name
+  #   }
+  # end
   paginates_per 2
 
   validates :name, presence: true,

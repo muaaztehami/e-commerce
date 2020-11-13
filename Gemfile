@@ -70,3 +70,4 @@ gem 'simple_token_authentication', '~> 1.0'
 gem 'rubocop', '~> 1.2', require: false
 gem 'bcrypt'
 gem 'rack-cors', :require =>  'rack/cors'
+gem 'searchkick'
